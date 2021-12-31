@@ -81,6 +81,7 @@ namespace fishingutils
         // NOTE: Fishing is disabled until further notice, since it is a security liability.
         ShowWarning("Fishing is currently disabled");
         return;
+        /*
 
         if (PChar->animation != ANIMATION_NONE)
         {
@@ -127,6 +128,7 @@ namespace fishingutils
 
         PChar->pushPacket(new CCharUpdatePacket(PChar));
         PChar->pushPacket(new CCharSyncPacket(PChar));
+        */
     }
 
     /************************************************************************
@@ -381,6 +383,7 @@ namespace fishingutils
     {
         ShowWarning("Fishing is currently disabled");
         return;
+        /*
 
         uint16 MessageOffset = GetMessageOffset(PChar->getZone());
 
@@ -489,6 +492,7 @@ namespace fishingutils
 
         PChar->pushPacket(new CCharUpdatePacket(PChar));
         PChar->pushPacket(new CCharSyncPacket(PChar));
+        */
     }
 
 } // namespace fishingutils
