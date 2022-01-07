@@ -221,7 +221,7 @@ namespace debug
 
     std::string GetSymName(HANDLE Process, DWORD64 ModBase, ULONG TypeIndex)
     {
-        WCHAR* WName = L"";
+        WCHAR* WName;
         if (!SymGetTypeInfo(Process, ModBase, TypeIndex, TI_GET_SYMNAME, &WName))
         {
             return "";
@@ -879,7 +879,6 @@ namespace debug
         IMAGEHLP_LINE64* line;
 
         char         buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
-        char         name[256];
         char         module[256];
         PSYMBOL_INFO pSymbol = (PSYMBOL_INFO)buffer;
 
@@ -960,7 +959,7 @@ namespace debug
             sf.InstructionOffset = stack.AddrPC.Offset;
             SymSetContext(process, &sf, NULL);
 
-            char* Mask = "*";
+            PCSTR Mask = "*";
             SymEnumSymbols(process, 0, Mask, EnumSymProc, &stack);
 
             // No need to dig deeper than main
